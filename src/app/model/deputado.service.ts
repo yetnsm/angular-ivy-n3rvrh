@@ -15,6 +15,9 @@ export class DeputadoService {
   }
 
   pesquisarSigla(s: HTMLInputElement): Observable<any> {
+    if(s.value == "") {
+      alert("Nenhum partido selecionado. Listagem de todos os deputados.");
+    }
     return this.http.get<any>(`${this.URL}deputados?siglaPartido=${s.value}&ordem=ASC&ordenarPor=nome`);
   }
 }
